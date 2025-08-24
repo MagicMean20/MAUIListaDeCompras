@@ -3,11 +3,11 @@ using SQLite;
 
 namespace ListaDeCompras.Helpers
 {
-    internal class SQLiteDataBeseHelper
+    public class SQLiteDatabaseHelper
     {
         readonly SQLiteAsyncConnection _conn;
 
-        public SQLiteDataBeseHelper(string path) 
+        public SQLiteDatabaseHelper(string path) 
         {
             _conn = new SQLiteAsyncConnection(path);
             _conn.CreateTableAsync<Produto>().Wait();

@@ -1,4 +1,4 @@
-namespace ListaDeCompras.Models;
+namespace ListaDeCompras.View;
 
 public partial class EditarProduto : ContentPage
 {
