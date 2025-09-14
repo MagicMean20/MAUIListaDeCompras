@@ -20,7 +20,7 @@ namespace ListaDeCompras.Helpers
 
         public Task<List<Produto>> Update(Produto p) 
         {
-            string sql = "UPDATE Produto SET Decricao=?, Quantidade=?, Preco=?, WHERE Id=?";
+            string sql = "UPDATE Produto SET Descricao=?, Categoria=?, Quantidade=?, Preco=? WHERE Id=?";
 
             return _conn.QueryAsync<Produto>
                 (sql,p.Descricao,p.Quantidade,p.Preco,p.Id);
@@ -39,6 +39,14 @@ namespace ListaDeCompras.Helpers
         public Task<List<Produto>> Search(string q)
         {
             string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + q +"%'";
+
+            return _conn.QueryAsync<Produto>(sql);
+        }
+
+        //parte adicionada
+        public Task<List<Produto>> Categoria(string q)
+        {
+            string sql = $"SELECT * FROM Produto WHERE categoria LIKE '%" + q + "%'";
 
             return _conn.QueryAsync<Produto>(sql);
         }

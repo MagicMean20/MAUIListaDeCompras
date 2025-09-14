@@ -5,6 +5,7 @@ namespace ListaDeCompras
 {
     public partial class App : Application
     {
+
         static SQLiteDatabaseHelper _db;
 
         internal static SQLiteDatabaseHelper Db

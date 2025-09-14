@@ -17,6 +17,7 @@ public partial class NovoProduto : ContentPage
 			Produto p = new Produto
 			{
 				Descricao = txtDescricao.Text,
+				Categoria = txtCategoria.Text, // Adicionada
 				Quantidade = Convert.ToDouble(txtQuantidade.Text),
 				Preco = Convert.ToDouble(txtPreco.Text)
 			};
