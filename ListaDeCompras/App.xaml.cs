@@ -1,5 +1,6 @@
 ﻿using ListaDeCompras.Helpers;
 using ListaDeCompras.View;
+using System.Globalization;
 
 namespace ListaDeCompras
 {
@@ -32,13 +33,15 @@ namespace ListaDeCompras
 
             //MainPage = new AppShell();
             MainPage = new NavigationPage(new View.ListaProduto());
+
+           Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
             var wind = base.CreateWindow(activationState);
 
-            wind.Width = 400;
+            wind.Width = 550;
             wind.Height = 600;
 
             return wind;

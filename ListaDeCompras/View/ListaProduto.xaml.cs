@@ -78,7 +78,11 @@ public partial class ListaProduto : ContentPage
 		catch (Exception ex)
 		{
 			await DisplayAlert("Ops", ex.Message, "OK");
-        } 
+		}
+		finally
+		{
+			listProdutos.IsRefreshing = true;
+		}
         
     }
 
@@ -129,5 +133,26 @@ public partial class ListaProduto : ContentPage
 		{
 			DisplayAlert("Ops", ex.Message, "OK");
         }
+    }
+
+    private async void listProdutos_Refreshing(object sender, EventArgs e)
+    {
+        try
+        {
+            /*A inserção dos dados não pode ser feita de forma direta,
+			sendo necessário criar uma <List> para inserir os registros na Collection*/
+            List<Produto> tnp = await App.Db.GetAll();
+
+            //Lê a lista e adiciona os registros a cada i (linha)
+            tnp.ForEach(i => lista.Add(i));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Ops", ex.Message, "OK");
+        }
+		finally // Propriedade que é executado de toda maneira
+		{
+			listProdutos.IsRefreshing = false;
+		}
     }
 }
